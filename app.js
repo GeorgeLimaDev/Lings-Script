@@ -63,4 +63,3 @@ console.log(tema)
 alterarTema('Escuro')
 // Verificando valor na variável tema após execução da função:
 console.log(tema)
-
