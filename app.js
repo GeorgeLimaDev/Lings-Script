@@ -92,6 +92,31 @@ console.log(valor)
 // Operadores de comparação (idênticos: mesmo valor e tipo. Igual: mesmo valor podendo diferir em tipo)
 console.log(1 === 1) // True, pois são idênticos
 console.log(1 === '1') // False, pois são diferentes em tipos.
-console.log(1 == '1') // True pois são iguais em valor
+console.log(1 == '1') // True, pois são iguais em valor
+
+// Operadores:
 // Operadores lógicos
+let pontos = 100
+let tipo = pontos > 100 ? 'premium' : 'comum'; // Teste lógico if e else resumido em uma linha. Caso o resultado seja true, será atribuído o primeiro argumento, se false, o segundo.
+console.log(tipo);
+// Teste lógico and (&&): Retorna true se os dois operandos forem true.
+console.log('Tabela verdade do and (&&):')
+console.log(true && true)
+console.log(true && false)
+console.log(false && true)
+console.log(false && false)
+let maiorDeIdade = true
+let possuiCarteiraTrabalho = true
+let podeAplicarVaga = maiorDeIdade && possuiCarteiraTrabalho
+console.log(podeAplicarVaga) // Libera a operação já que ambas as condições foram atendidas.
+// Teste lógico or (||): Retorna true se pelo menos um dos operandos for true.
+console.log('Tabela verdade do or (||):')
+console.log(true || true)
+console.log(true || false)
+console.log(false || true)
+console.log(false || false)
+let habilitacaoA = false
+let habilitacaoB = true
+let possuiAoMenosUma = habilitacaoA || habilitacaoB
+console.log(possuiAoMenosUma)
 // Operadores bitwise
