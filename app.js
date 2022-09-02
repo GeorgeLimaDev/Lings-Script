@@ -63,3 +63,35 @@ console.log(tema)
 alterarTema('Escuro')
 // Verificando valor na variável tema após execução da função:
 console.log(tema)
+
+// Tipos de funções:
+// Tipo 1: Realiza uma tarefa e não retorna nada.
+function dizerNome() {
+    console.log('George')
+}
+dizerNome()
+
+// Tipo 2: Realiza a tarefa e retorna um resultado para o programa principal
+function DobrarNumero (valor) {
+    return valor * 2
+}
+console.log(DobrarNumero(5))
+// Quando há um retorno ele pode ser armazenado em uma variável.
+let resultado = DobrarNumero(4)
+console.log(resultado)
+
+// Operadores:
+// Aritméticos (matemáticos: +, -, *, **, /, //, %, ^, ...)
+let salario = 1212
+console.log(salario + salario)
+console.log(salario / salario)
+// Operadores de atribuição (O sinal de = usado para atribuir valores às variáveis.)
+let valor = 100
+valor += 100 // (Forma encurtada de somar os mesmos valores)
+console.log(valor)
+// Operadores de comparação (idênticos: mesmo valor e tipo. Igual: mesmo valor podendo diferir em tipo)
+console.log(1 === 1) // True, pois são idênticos
+console.log(1 === '1') // False, pois são diferentes em tipos.
+console.log(1 == '1') // True pois são iguais em valor
+// Operadores lógicos
+// Operadores bitwise
