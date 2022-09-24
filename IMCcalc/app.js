@@ -35,6 +35,5 @@ function calcularIMC() {
     inputResultado.value = `${resultado.toFixed(2)} - ${status}`
   }
   
-  console.log('chegou aqui')
-  let botaoCalcular = document.querySelector("#calcular")
-  botaoCalcular.addEventListener("click", calcularIMC)
+let botaoCalcular = document.querySelector("#calcular")
+botaoCalcular.addEventListener("click", calcularIMC)
