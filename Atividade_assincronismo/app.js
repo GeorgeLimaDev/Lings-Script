@@ -1,4 +1,3 @@
-
 //Lendo o campo de cep para atribuir uma ação a ele:
 let cep = document.getElementById('cep')
 cep.addEventListener('focusout', lerCEP)
@@ -6,7 +5,7 @@ cep.addEventListener('focusout', lerCEP)
 
 //Função para passar o CEP digitado para a API:
 function lerCEP () {
-    let cepValue = document.getElementById('cep').value
+    let cepValue = cep.value
     let cepLido = `https://viacep.com.br/ws/${cepValue}/json/`
     getCEP(cepLido)
 }
@@ -24,18 +23,19 @@ async function getCEP(cepLido) {
     }
 }
 
-//Função que exibe os dados recebidos no console e na página:
-function showContent(cep) {
+//Função que exibe os dados recebidos na página:
+function showContent(json) {
     let logradouro = document.getElementById('logradouro')
-    logradouro.value = cep.logradouro
+    logradouro.value = json.logradouro
     let bairro = document.getElementById('bairro')
-    bairro.value = cep.bairro
+    bairro.value = json.bairro
     let cidade = document.getElementById('cidade')
-    cidade.value = cep.localidade
+    cidade.value = json.localidade
     let estado = document.getElementById('estado')
-    estado.value = cep.uf
+    estado.value = json.uf
 }
 
+//Função executada quando o tamanho do CEP digitado for diferente de 8 dígitos:
 function erroCEP() {
     window.alert('Digite um CEP válido.')
     cep.style.border = '1px solid red'
