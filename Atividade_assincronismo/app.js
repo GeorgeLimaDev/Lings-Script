@@ -8,16 +8,20 @@ cep.addEventListener('focusout', lerCEP)
 function lerCEP () {
     const cepValue = document.getElementById('cep').value
     let cepLido = `https://viacep.com.br/ws/${cepValue}/json/`
-    console.log(cepLido)
     getCEP(cepLido)
 }
 
 
 //Função assíncrona que recebe o CPF e traz o endereço:
 async function getCEP(url) {
-    const response = await fetch(url)
-    const json = await response.json()
-    showContent(json)
+    try {
+        const response = await fetch(url)
+        const json = await response.json()
+        showContent(json)
+        cep.style.border = 'none' //Esta linha é pra voltar ao padrão depois de uma tentativa incorreta, se não fica sempre vermelho.
+    } catch {
+        erroCEP()
+    }
 }
 
 //Função que exibe os dados recebidos no console e na página:
@@ -31,4 +35,11 @@ function showContent(cep) {
     cidade.value = cep.localidade
     let estado = document.getElementById('estado')
     estado.value = cep.uf
+}
+
+function erroCEP() {
+    window.alert('Digite um CEP válido.')
+    //let cep = document.getElementById('cep')
+    cep.style.border = '1px solid red'
+    Form.reset()
 }
