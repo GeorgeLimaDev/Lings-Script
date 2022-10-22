@@ -2,14 +2,12 @@
 let cep = document.getElementById('cep')
 cep.addEventListener('focusout', lerCEP)
 
-
 //Função para passar o CEP digitado para a API:
 function lerCEP () {
     let cepValue = cep.value
     let cepLido = `https://viacep.com.br/ws/${cepValue}/json/`
     getCEP(cepLido)
 }
-
 
 //Função assíncrona que recebe o CPF e traz o endereço:
 async function getCEP(cepLido) {
