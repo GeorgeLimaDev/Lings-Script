@@ -9,14 +9,14 @@ function lerCEP() {
   getCEP(cepLido)
 }
 
-//Função assíncrona que recebe o CPF e traz o endereço:
+//Função assíncrona que recebe o CEP e traz o endereço:
 async function getCEP(cepLido) {
   try {
     const response = await fetch(cepLido)
     const json = await response.json()
     showContent(json)
     cep.style.border = '' //Esta linha é pra voltar ao padrão depois de uma tentativa incorreta, se não fica sempre vermelho.
-    if (json.uf == undefined) {
+    if (json.uf == undefined) { //Se o CEP tiver o tamanho correto mas não existir.
       erroCEP()
     }
   } catch {
@@ -36,7 +36,7 @@ function showContent(json) {
   estado.value = json.uf
 }
 
-//Função executada quando o tamanho do CEP digitado for diferente de 8 dígitos:
+//Função executada quando o tamanho do CEP digitado for diferente de 8 dígitos ou não existir:
 function erroCEP() {
   cep.style.border = '1px solid red'
   let form = document.getElementById('form')
