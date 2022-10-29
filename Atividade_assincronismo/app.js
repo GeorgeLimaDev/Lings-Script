@@ -5,19 +5,20 @@ cep.addEventListener('focusout', lerCEP)
 //Função para passar o CEP digitado para a API:
 function lerCEP() {
   let cepValue = cep.value
+  let cepGuardado = cepValue //Guardando o CEP para manter digitado no campo após o reset.
   let cepLido = `https://viacep.com.br/ws/${cepValue}/json/`
-  getCEP(cepLido)
+  getCEP(cepLido, cepGuardado)
 }
 
 //Função assíncrona que recebe o CEP e traz o endereço:
-async function getCEP(cepLido) {
+async function getCEP(cepLido, cepGuardado) {
   try {
     const response = await fetch(cepLido)
     const json = await response.json()
     showContent(json)
     cep.style.border = '' //Esta linha é pra voltar ao padrão depois de uma tentativa incorreta, se não fica sempre vermelho.
     if (json.uf == undefined) { //Se o CEP tiver o tamanho correto mas não existir.
-      erroCEP()
+      erroCEP(cepGuardado)
     }
   } catch {
     erroCEP()
@@ -37,9 +38,13 @@ function showContent(json) {
 }
 
 //Função executada quando o tamanho do CEP digitado for diferente de 8 dígitos ou não existir:
-function erroCEP() {
+function erroCEP(cepGuardado) {
   cep.style.border = '1px solid red'
   let form = document.getElementById('form')
   form.reset()
   cep.placeholder = 'CEP inválido ou incorreto. Tente novamente.'
+  cep.value = cepGuardado //Mantém o CEP digitado para não ter que digitar tudo de novo.
+  if (cep.value == cepGuardado) {
+    window.alert('CEP digitado não existe. Favor corrigir.')
+  }
 }
